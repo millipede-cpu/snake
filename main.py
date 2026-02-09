@@ -68,8 +68,8 @@ color)
     # displaying text
     game_window.blit(score_surface, score_rect)
 
-    # game over function
-    def game_over():
+# game over function
+def game_over():
 
         # creating font object my_font
         my_font = pygame.font.SysFont('times new roman', 50)
@@ -105,8 +105,33 @@ color)
            pygame.display.update()
            clock.tick(60)
 
-        # deactivating pygame library
-        pygame.quit()
+         # deactivating pygame library
+         pygame.quit()
 
-        # quit the program
-        # quit()
+         # quit the program
+         # quit()
+        
+         # Main Function
+while True:
+    # TODO: handle key events
+    break
+        
+# handling key events
+
+# change direction of key controls
+
+# Moving the snake
+ 
+# Snake body growing mechanism if fruits and snakes
+
+# collide then scores will be incremented by 10
+
+# Game over conditions
+
+# Touching the snake body
+
+# displaying score continously
+
+# Refresh game screen
+
+# Frame Per Second / Refresh Rate
