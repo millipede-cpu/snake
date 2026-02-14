@@ -40,14 +40,14 @@ score = 0
 # ---------------------------
 
 def show_score():
-    """Display the current score on the screen."""
+    # Display the current score on the screen
     font = pygame.font.SysFont('times new roman', 20)
     score_surface = font.render(f'Score : {score}', True, white)
     game_window.blit(score_surface, (10, 10))
 
 
 def game_over():
-    """Show game over screen and quit."""
+    # Show game over screen and quit
     font = pygame.font.SysFont('times new roman', 50)
     game_over_surface = font.render(f'Your Score : {score}', True, red)
     game_over_rect = game_over_surface.get_rect()
