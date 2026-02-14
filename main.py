@@ -39,29 +39,42 @@ score = 0
 # FUNCTIONS
 # ---------------------------
 
-def show_score():
+def show_score(score):
     # Display the current score on the screen
     font = pygame.font.SysFont('times new roman', 20)
     score_surface = font.render(f'Score : {score}', True, white)
     game_window.blit(score_surface, (10, 10))
 
 
-def game_over():
-    # Show game over screen and quit
+def game_over_screen(score):
+    # Show game over screen for 2 seconds
     font = pygame.font.SysFont('times new roman', 50)
-    game_over_surface = font.render(f'Your Score : {score}', True, red)
-    game_over_rect = game_over_surface.get_rect()
-    game_over_rect.midtop = (window_x / 2, window_y / 4)
-    game_window.blit(game_over_surface, game_over_rect)
+    over_surface = font.render(f'Your Score : {score}', True, red)
+    over_rect = over_surface.get_rect()
+    over_rect.midtop = (window_x / 2, window_y / 4)
+    game_window.blit(over_surface, over_rect)
     pygame.display.flip()
     pygame.time.delay(2000)  # pause 2 seconds
-    pygame.quit()
-    quit()
 
+def reset_game():
+    # Return initial positions and  
+    # to restart the game
+    snake_pos = [100, 50]
+    snake_body = [[100, 50], [90, 50], [80, 50], [70, 50]]
+    fruit_pos = [random.randrange(1, (window_x // 10)) * 10,
+                 random.randrange(1, (window_y // 10)) * 10]
+    direction = 'RIGHT'
+    change_to = direction
+    score = 0
+    return snake_pos, snake_body, fruit_pos, direction, change_to, score
 
 # ---------------------------
 # MAIN GAME LOOP
 # ---------------------------
+
+# Initialize game state
+snake_position, snake_body, fruit_position, direction, change_to, score = reset_game()
+fruit_spawn = True
 
 while True:
     # Event handling (keyboard input)
@@ -123,19 +136,26 @@ while True:
     # Draw fruit
     pygame.draw.rect(game_window, white, pygame.Rect(fruit_position[0], fruit_position[1], 10, 10))
 
-    # Check for collisions with walls
+  # Check for collisions
+    collision = False
     if snake_position[0] < 0 or snake_position[0] >= window_x:
-        game_over()
+        collision = True
     if snake_position[1] < 0 or snake_position[1] >= window_y:
-        game_over()
-
-    # Check for collisions with self
+        collision = True
     for block in snake_body[1:]:
         if snake_position[0] == block[0] and snake_position[1] == block[1]:
-            game_over()
+            collision = True
+
+    # Handle collisions
+    if collision:
+        game_over_screen(score)  # show score and pause
+        # Reset game state
+        snake_position, snake_body, fruit_position, direction, change_to, score = reset_game()
+        fruit_spawn = True
+        continue  # restart loop with new game state
 
     # Display score
-    show_score()
+    show_score(score)
 
     # Refresh screen
     pygame.display.update()
