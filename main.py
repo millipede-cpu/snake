@@ -134,7 +134,7 @@ while True:
         pygame.draw.rect(game_window, green, pygame.Rect(pos[0], pos[1], 10, 10))
 
     # Draw fruit
-    pygame.draw.rect(game_window, white, pygame.Rect(fruit_position[0], fruit_position[1], 10, 10))
+    pygame.draw.rect(game_window, red, pygame.Rect(fruit_position[0], fruit_position[1], 10, 10))
 
   # Check for collisions
     collision = False
