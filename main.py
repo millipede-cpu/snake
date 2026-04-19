@@ -20,8 +20,8 @@ pygame.mixer.init()
 pygame.display.set_caption("Snake Game")
 game_window = pygame.display.set_mode((window_x, window_y))
 
-eat_sound = pygame.mixer.Sound("/assets/sounds/eat.ogg")
-death_sound= pygame.mixer.Sound("/assets/sounds/death.ogg")
+eat_sound = pygame.mixer.Sound("assets/sounds/eat.ogg")
+die_sound= pygame.mixer.Sound("assets/sounds/die.ogg")
 fps = pygame.time.Clock()
 
 # ---------------------------
@@ -194,8 +194,8 @@ async def main():
                 collision = True
 
         if collision:
-            death_sound.play()
             game_over_screen(score)
+            die_sound.play()
 
             snake_position, snake_body, fruit_position, direction, change_to, score = reset_game()
             fruit_spawn = True
