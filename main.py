@@ -16,8 +16,12 @@ green = pygame.Color(0, 255, 0)
 
 # Initialise Pygame
 pygame.init()
+pygame.mixer.init()
 pygame.display.set_caption("Snake Game")
 game_window = pygame.display.set_mode((window_x, window_y))
+
+eat_sound = pygame.mixer.Sound("/assets/sounds/eat.ogg")
+death_sound= pygame.mixer.Sound("/assets/sounds/death.ogg")
 fps = pygame.time.Clock()
 
 # ---------------------------
@@ -48,7 +52,7 @@ def game_over_screen(score):
     
     pygame.display.flip()
 
-    for _ in range(180):
+    for _ in range(300):
         fps.tick(60)
 
 
@@ -139,6 +143,7 @@ async def main():
 
         if snake_position == fruit_position:
             score += 10
+            eat_sound.play()
             fruit_spawn = False
         else:
             snake_body.pop()
@@ -189,6 +194,7 @@ async def main():
                 collision = True
 
         if collision:
+            death_sound.play()
             game_over_screen(score)
 
             snake_position, snake_body, fruit_position, direction, change_to, score = reset_game()
