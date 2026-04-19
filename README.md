@@ -36,8 +36,11 @@ Check pygame version: `python3 -m pygame --version`
 2. Install dependencies:
    `pip install -r requirements.txt`
 
-3. Run the game:
+3. Run the game locally:
 
 - **From VS Code:** Open `main.py` and click the ▶️ play button in the toolbar.  
 - **From Terminal:** Navigate to the project folder and run: `python3 main.py`
 
+4. 🕹️ Game controls:
+
+- Use the UP, RIGHT, LEFT AND DOWN keys to control the snake and eat those apples. Have fun!
