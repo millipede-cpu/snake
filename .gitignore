@@ -3,6 +3,7 @@
 
 # Python cache files
 __pycache__/
+docs/web-cache
 *.pyc
 *.pyo
 *.pyd
