@@ -1,6 +1,6 @@
 # Snake Game
 
-A simple snake game built with Python and Pygame.
+A retro snake game built with Python, Pygame and available to play on Github Pages with pygbag [here](https://millipede-cpu.github.io/snake/) 🐍
 
 ## Prerequisites
 
